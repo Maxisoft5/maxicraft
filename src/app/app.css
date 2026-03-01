@@ -1,0 +1,109 @@
+:host {
+  display: flex;
+}
+
+.dark-light-text, h1, h2, h3, h4, h5, h6 {
+  color: var(--app-text-color) !important;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  color: var(--app-text-color) !important;
+}
+
+.ant-layout-content, .app-layout {
+   background: var(--app-bg-color) !important;
+}
+
+.app-layout {
+  height: fit-content;
+}
+
+.top-nav {
+  height: 100%;
+}
+
+.ant-layout {
+  min-height: 100vh;
+}
+
+
+.logo img {
+  display: inline-block;
+  vertical-align: middle;
+}
+
+.logo h1 {
+  display: inline-block;
+  margin: 0 0 0 1vw;
+  font-weight: 600;
+  font-size: 1.5vw;
+  font-family: Avenir,Helvetica Neue,Arial,Helvetica,sans-serif;
+  vertical-align: middle;
+}
+
+.header-row {
+  display: flex;
+  justify-content: space-between;
+  font-family: Poppins, sans-serif;
+  position: fixed;
+  width: 100%;
+  z-index: 50;
+}
+
+nz-content {
+  padding: 24px 50px;
+}
+
+.text-color {
+  color:#313131;
+}
+
+.inner-content {
+  padding: 24px;
+  background: var(--app-bg-color);
+  color: var(--app-text-color);
+  border-radius: 6px;
+  height: 100%;
+}
+
+.dotnet-icon {  
+  font-size: 6vh;
+}
+
+.logo-row {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.text-header-case {
+  text-transform: uppercase;
+  font-size: 1.2vw;
+}
+
+.switch-light {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.lighter {
+  height: 8vh;
+  display: flex;
+  align-items: center;
+}
+
+.light {
+  background: white;
+  color: #001529;
+}
+
+.dark {
+  color:white;
+  background: #001529;
+}
+
+.ant-layout-content {
+  height: fit-content;
+  margin-top: 10vh;
+}

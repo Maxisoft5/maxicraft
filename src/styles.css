@@ -1,0 +1,23 @@
+
+:root {
+  --app-bg-color: #ffffff;
+  --app-text-color: #001529;
+  --app-border-color: #d9d9d9;
+  --app-text-color-reverse: #ffffff; 
+}
+
+.dark-light-text, h1, h2, h3, h4, h5, h6 {
+  color: var(--app-text-color) !important;
+}
+
+.dark-light-text-reverse {
+    color: var(--app-text-color-reverse) !important;
+}
+
+h1, h2, h3, h4, h5, h6, p, .title-block, .upper-first-let {
+  color: var(--app-text-color) !important;
+}
+
+.ant-card {
+    background: var(--app-bg-color) !important;
+}

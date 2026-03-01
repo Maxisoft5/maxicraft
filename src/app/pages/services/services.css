@@ -1,0 +1,55 @@
+.msg-block {
+    border: none !important;
+    width: 56vw;
+    padding: 3vw;
+}
+
+.services-block {
+    border: none !important;
+    padding: 3vw;
+}
+
+.title-block {
+    font-family: "Yanone Kaffeesatz",sans-serif;
+    font-weight: 700;
+    line-height: 1;
+    font-size: 7vw;
+    color:#313131;
+    font-style: normal;
+    margin: 0;
+}
+
+.services-title {
+    font-family: "Yanone Kaffeesatz",sans-serif;
+    font-weight: 500;
+    line-height: 1;
+    font-size: 4vw;
+    color:#313131;
+    font-style: normal;
+    margin: 0;
+}
+
+.service-title {
+    font-family: "Yanone Kaffeesatz",sans-serif;
+    font-weight: 500;
+    line-height: 3;
+    font-size: 3vw;
+    color:#313131;
+    font-style: normal;
+    margin: 0;
+}
+
+.service-card {
+    max-width: 35vw;
+    margin-left: 5vw;
+}
+
+.services {
+    display: flex;
+}
+
+.disscus-project {
+    padding: 50px;
+    display: flex;
+    justify-content: center;
+}

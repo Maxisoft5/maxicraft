@@ -1,37 +1,137 @@
-.msg-block {
-    border: none !important;
-    width: 56vw;
-    padding: 3vw;
+.welcome-page {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 0 24px 80px;
 }
 
-.title-block {
-    font-family: "Yanone Kaffeesatz",sans-serif;
-    font-weight: 700;
-    line-height: 1;
-    font-size: 10vw;
-    color:#313131;
-    font-style: normal;
-    margin: 0;
+.hero-section {
+  padding: 80px 0 100px;
 }
 
-.upper-first-let {
-    font-size: clamp(2.25rem,1.784rem + 1.9118vw,3.875rem);
+.hero-title {
+  font-family: Yanone Kaffeesatz,sans-serif;
+  font-weight: 900;
+  font-size: clamp(64px,13vw,160px);
+  line-height: .88;
+  color: var(--app-text-color) !important;
+  margin: 0 0 8px;
 }
 
-.upper-first-let::first-letter {
-    font-family: "Yanone Kaffeesatz",sans-serif;
-    font-weight: 700;
-    line-height: 1;
-    font-size: 15vw;
-    font-style: normal;
-    margin: 0;
+.hero-subtitle {
+  font-family: Yanone Kaffeesatz,sans-serif;
+  font-weight: 700;
+  font-size: clamp(28px,5vw,56px);
+  color: var(--app-text-color) !important;
+  margin: 0 0 28px;
+  line-height: 1.1;
 }
 
-.contact-me-form {
-    border-radius: 20px;
-    margin-top: 100px;
+.craft-tagline {
+  font-size: 16px;
+  color: var(--app-text-color);
+  margin-bottom: 28px;
+  max-width: 520px;
+  line-height: 1.5;
 }
 
-.page-divider {
-    display: flex;
+.hero-badges {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  border: 1px solid var(--app-border-color);
+  border-radius: 100px;
+  padding: 6px 18px;
+  font-size: 13px;
+  letter-spacing: .07em;
+  text-transform: uppercase;
+  color: var(--app-text-color);
+}
+
+.dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.dot-green {
+  background-color: #52c41a;
+}
+
+.craft-item {
+  padding: 72px 0 56px;
+}
+
+.craft-giant {
+  font-family: Yanone Kaffeesatz,sans-serif;
+  font-weight: 700;
+  font-size: clamp(120px,22vw,280px);
+  line-height: .82;
+  color: var(--app-text-color) !important;
+  margin-bottom: 24px;
+  -webkit-user-select: none;
+  user-select: none;
+}
+
+.craft-desc-row {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  margin-bottom: 16px;
+}
+
+.craft-subtitle {
+  font-family: Yanone Kaffeesatz,sans-serif;
+  font-weight: 400;
+  font-size: clamp(22px,3.8vw,44px);
+  color: var(--app-text-color) !important;
+  margin: 0;
+  line-height: 1.1;
+}
+
+.craft-num {
+  font-size: 13px;
+  color: #999;
+  letter-spacing: .05em;
+  flex-shrink: 0;
+  margin-left: 16px;
+}
+
+.craft-body {
+  font-size: 16px;
+  color: var(--app-text-color);
+  max-width: 580px;
+  line-height: 1.65;
+  margin: 0;
+}
+
+.craft-divider {
+  border: none;
+  border-top: 1px solid var(--app-border-color);
+  margin: 0;
+}
+
+@media(max-width:768px) {
+  .welcome-page {
+    padding: 0 16px 60px;
+  }
+  .hero-section {
+    padding: 40px 0 60px;
+  }
+  .craft-item {
+    padding: 40px 0 32px;
+  }
+  .craft-giant {
+    font-size: clamp(80px,28vw,140px);
+  }
+  .hero-badges {
+    flex-direction: column;
+    align-items: flex-start;
+  }
 }

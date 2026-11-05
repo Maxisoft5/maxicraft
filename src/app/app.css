@@ -6,12 +6,8 @@
   color: var(--app-text-color) !important;
 }
 
-h1, h2, h3, h4, h5, h6 {
-  color: var(--app-text-color) !important;
-}
-
 .ant-layout-content, .app-layout {
-   background: var(--app-bg-color) !important;
+  background: var(--app-bg-color) !important;
 }
 
 .app-layout {
@@ -25,7 +21,6 @@ h1, h2, h3, h4, h5, h6 {
 .ant-layout {
   min-height: 100vh;
 }
-
 
 .logo img {
   display: inline-block;
@@ -44,7 +39,7 @@ h1, h2, h3, h4, h5, h6 {
 .header-row {
   display: flex;
   justify-content: space-between;
-  font-family: Poppins, sans-serif;
+  font-family: Poppins,sans-serif;
   position: fixed;
   width: 100%;
   z-index: 50;
@@ -55,7 +50,7 @@ nz-content {
 }
 
 .text-color {
-  color:#313131;
+  color: #313131;
 }
 
 .inner-content {
@@ -66,7 +61,7 @@ nz-content {
   height: 100%;
 }
 
-.dotnet-icon {  
+.dotnet-icon {
   font-size: 6vh;
 }
 
@@ -94,16 +89,72 @@ nz-content {
 }
 
 .light {
-  background: white;
+  background: #fff;
   color: #001529;
 }
 
 .dark {
-  color:white;
+  color: #fff;
   background: #001529;
 }
 
 .ant-layout-content {
   height: fit-content;
   margin-top: 10vh;
+}
+
+.mobile-menu-bar, .mobile-nav-toggle {
+  display: none;
+}
+
+@media screen and (max-width:768px) {
+  nz-content {
+    padding: 0 !important;
+  }
+  [nz-form] {
+    max-width: 30vw !important;
+  }
+  .title-block {
+    font-size: 14px !important;
+  }
+  .inner-content {
+    padding: none !important;
+  }
+  .text-header-case {
+    font-size: 14px !important;
+  }
+  .mobile-menu-bar {
+    display: flex;
+  }
+  .mobile-nav-toggle {
+    display: block;
+  }
+  .ant-layout-header {
+    padding: 10px;
+    align-items: center;
+    max-width: 99vw;
+  }
+  .ant-layout-header .ant-btn {
+    width: 75px;
+    height: 25px;
+    font-size: 6px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .top-nav:not(.mobile-menu-bar) {
+    display: none !important;
+  }
+  .mobile-menu-bar {
+    display: flex;
+    flex-direction: column;
+  }
+}
+
+.mobile-nav-button {
+  padding: 0;
+  border: 0;
+  background: transparent;
+  color: var(--app-text-color);
+  cursor: pointer;
 }

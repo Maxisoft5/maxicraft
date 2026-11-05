@@ -1,3 +1,5 @@
+@import './fonts/fonts.css';
+
 
 :root {
   --app-bg-color: #ffffff;
@@ -20,4 +22,10 @@ h1, h2, h3, h4, h5, h6, p, .title-block, .upper-first-let {
 
 .ant-card {
     background: var(--app-bg-color) !important;
+}
+:root.dark-theme {
+  --app-bg-color: #001529;
+  --app-text-color: #ffffff;
+  --app-border-color: #434343;
+  --app-text-color-reverse: #000000;
 }

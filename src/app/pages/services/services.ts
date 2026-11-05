@@ -1,41 +1,32 @@
-import { Component, OnInit  } from "@angular/core";
-import { NzButtonModule, NzButtonSize } from "ng-zorro-antd/button";
-import { NzCardModule } from "ng-zorro-antd/card";
+import { Component, inject } from '@angular/core';
+import { TranslateModule, TranslateService } from '@ngx-translate/core';
+import { NzButtonModule } from 'ng-zorro-antd/button';
 import { NzIconModule } from 'ng-zorro-antd/icon';
-import { ContactUsModalForm } from "../../components/modal/contact-us-modal-form";
-import { NzModalModule, NzModalService } from "ng-zorro-antd/modal";
-import { TranslateModule, TranslateService } from "@ngx-translate/core";
-import { LanguageService } from "../../services/language.service";
+import { NzModalModule, NzModalService } from 'ng-zorro-antd/modal';
+import { ContactUsModalForm } from '../../components/modal/contact-us-modal-form';
 
 @Component({
   selector: 'app-services',
-  imports: [NzCardModule, NzIconModule, NzButtonModule, NzModalModule,TranslateModule],
+  imports: [TranslateModule, NzButtonModule, NzIconModule, NzModalModule],
   templateUrl: './services.html',
   styleUrl: './services.css'
 })
-export class Services implements OnInit {
+export class Services {
+  private readonly modal = inject(NzModalService);
+  private readonly translate = inject(TranslateService);
 
-   constructor(private modal: NzModalService,
-     private languageService: LanguageService,
-     private translateService: TranslateService
-  ) {}
+  readonly services = [
+    { title: 'WebDevServies', items: ['WebAppDev', 'BeSpokeAppDev', 'SupportProject', 'LegacyModern'] },
+    { title: 'IntegrationsPayments', items: ['PaymentGateways', 'OAuthSSO', 'GeoServices', 'WebhooksBots'] },
+    { title: 'AnalyticsBI', items: ['DashboardsCharts', 'ETLLargeData', 'SessionReplayService', 'ReportSharing'] },
+    { title: 'DevOpsInfra', items: ['CICDPipelines', 'Containerization', 'MonitoringLogging', 'PerformanceTuning'] }
+  ];
 
-  ngOnInit() {
-    // Подписываемся на изменения языка
-    this.languageService.currentLang$.subscribe(lang => {
-      this.translateService.use(lang);
+  openContact(): void {
+    this.modal.create({
+      nzTitle: this.translate.instant('LetsDiscussChallenges'),
+      nzContent: ContactUsModalForm,
+      nzFooter: null
     });
   }
-
-  size: NzButtonSize = 'large';
-    onClickTouch() {
-     const title = this.translateService.instant('LetsDiscussChallenges');
-     this.modal.create({
-        nzTitle: title,
-        nzContent: ContactUsModalForm,
-        nzClosable: true,
-        nzMaskClosable: true,
-        nzFooter: null
-      });
-    }
 }

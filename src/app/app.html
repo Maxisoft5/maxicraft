@@ -1,49 +1,68 @@
 <nz-layout class="app-layout">
-  <nz-header [ngClass]="GetHeaderCsl()">
-    <div id="welcome" [ngClass]="GetLogoCsl()">
-      <a class="logo-row">
+  <nz-header class="header-row" [ngClass]="theme">
+    <div id="welcome" class="logo" [ngClass]="theme">
+      <a class="logo-row site-brand" routerLink="/welcome">
         <nz-icon class="dotnet-icon" nzType="dot-net" nzTheme="outline" />
-        <h1 [ngClass]="GetTextCsl()">MAXICRAFT</h1>
+        <h1 class="text-color text-header-case" [ngClass]="theme">MAXICRAFT</h1>
       </a>
     </div>
-    <ul nz-menu class="top-nav" [nzTheme]="GetAppLightTheme()" nzMode="horizontal">
-      <li routerLink="/welcome" [ngClass]="GetTextCsl()" nz-menu-item 
-      routerLinkActive="ant-menu-item-selected"><a>{{'Start' | translate}}</a></li>
-      <li routerLink="/about" routerLinkActive="ant-menu-item-selected"
-       [ngClass]="GetTextCsl()" nz-menu-item><a>{{'AboutMe' | translate}}</a></li>
-      <li routerLink="/services" routerLinkActive="ant-menu-item-selected" [ngClass]="GetTextCsl()" 
-        nz-menu-item><a>{{'Services' | translate}}</a></li>
+
+    <div class="mobile-nav-toggle">
+      <button type="button" class="mobile-nav-button" [attr.aria-label]="'MenuLabel' | translate"
+              (click)="showSideMenu = !showSideMenu">
+        <nz-icon nzType="menu" nzTheme="outline" />
+      </button>
+      <nz-drawer nzPlacement="right" [nzClosable]="false" [nzVisible]="showSideMenu"
+                 (nzOnClose)="showSideMenu = false">
+        <ng-container *nzDrawerContent>
+          <ul nz-menu nzMode="horizontal" class="top-nav mobile-menu-bar" [nzTheme]="theme">
+            @for (link of nav; track link.path) {
+              <li nz-menu-item class="text-color text-header-case" [ngClass]="theme"
+                  [routerLink]="link.path" (click)="showSideMenu = false">
+                <a>{{ link.title | translate }}</a>
+              </li>
+            }
+          </ul>
+        </ng-container>
+      </nz-drawer>
+    </div>
+
+    <ul nz-menu nzMode="horizontal" class="top-nav" [nzTheme]="theme">
+      @for (link of nav; track link.path) {
+        <li nz-menu-item class="text-color text-header-case" [ngClass]="theme"
+            [routerLink]="link.path">
+          <a>{{ link.title | translate }}</a>
+        </li>
+      }
     </ul>
+
     <div class="switch-light">
-      <nz-switch
-          [(ngModel)]="IsNight"
-          class="lighter"
-          (ngModelChange)="onThemeChange()"
-          [nzCheckedChildren]="checkedTemplate"
-          [nzUnCheckedChildren]="unCheckedTemplate">
-      </nz-switch>
+      <nz-switch class="lighter" [ngModel]="isNight" (ngModelChange)="changeTheme($event)"
+                 [nzCheckedChildren]="checkedTemplate" [nzUnCheckedChildren]="unCheckedTemplate" />
     </div>
     <div>
-         <a nz-dropdown [nzDropdownMenu]="menu">
-            <nz-icon style="margin-right: 10px;" nzType="global" nzTheme="outline" />
-          <nz-icon nzType="down" />
-        </a>
+      <a nz-dropdown [nzDropdownMenu]="menu" tabindex="0" [attr.aria-label]="'LanguageLabel' | translate">
+        <nz-icon style="margin-right: 10px" nzType="global" nzTheme="outline" />
+        <nz-icon nzType="down" />
+      </a>
       <nz-dropdown-menu #menu="nzDropdownMenu">
-      <ul nz-menu nzSelectable>
-        <li (click)="onSelectLang('ru')" [ngClass]="GetActiveLangClass('ru')" nz-menu-item>RU</li>
-        <li (click)="onSelectLang('en')" [ngClass]="GetActiveLangClass('en')" nz-menu-item>ENG</li>
-      </ul>
-    </nz-dropdown-menu>
+        <ul nz-menu nzSelectable>
+          <li nz-menu-item [nzSelected]="activeLang === 'ru'" (click)="selectLang('ru')">RU</li>
+          <li nz-menu-item [nzSelected]="activeLang === 'en'" (click)="selectLang('en')">ENG</li>
+        </ul>
+      </nz-dropdown-menu>
     </div>
     <div>
-      <button (click)="onClickTouch()" nz-button [nzSize]="size" nzType="primary">{{'GetInTouch' | translate}}</button>
-     </div>
-    <ng-template #checkedTemplate><nz-icon nzType="moon"/></ng-template>
-    <ng-template #unCheckedTemplate><nz-icon nzType="sun"/></ng-template>
-  </nz-header> 
-  <nz-content>  
-    <div [ngClass]="{'dark-theme': IsNight}" class="inner-content">
-      <router-outlet></router-outlet>
+      <button type="button" nz-button nzType="primary" nzSize="large" (click)="openContact()">
+        {{ 'GetInTouch' | translate }}
+      </button>
+    </div>
+    <ng-template #checkedTemplate><nz-icon nzType="moon" /></ng-template>
+    <ng-template #unCheckedTemplate><nz-icon nzType="sun" /></ng-template>
+  </nz-header>
+  <nz-content>
+    <div class="inner-content" [class.dark-theme]="isNight">
+      <router-outlet />
     </div>
   </nz-content>
 </nz-layout>

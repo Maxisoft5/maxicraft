@@ -1,38 +1,40 @@
- <section class="services-section">
-        <nz-card class="msg-block">
-                <p class="title-block">{{ 'OurServices' | translate }}</p>
-                <p>{{'OurServicesMsg' | translate}}</p>
-        </nz-card>
-</section>
-<div style="display: flex; justify-content: space-between;">
-    <section class="services-section">
-            <nz-card class="msg-block">
-                    <p class="services-title">{{'WhatWeDo' | translate}}</p>
-                    <p>{{'WhatWeDoMsg' | translate}}</p>
-            </nz-card>
-    </section>
-     <nz-card class="services-block">
-                <p style="display: flex; gap:1rem; align-items: center;">
-                    <nz-icon style="font-size: 2rem;" nzType="dot-net" nzTheme="outline" />
-                    <nz-icon style="font-size: 1rem;" nzType="java-script" nzTheme="outline" />
-                    <nz-icon style="font-size: 1rem;" nzType="html5" nzTheme="outline" />
-                    <nz-icon style="font-size: 1rem;" nzType="docker" nzTheme="outline" />
-                </p>
-                <p>{{'TechnologiesListMsg' | translate}}</p>
-    </nz-card>
+<div class="services-page">
+  <div class="section-eyebrow"><span class="eyebrow-line"></span> СЕРВИСЫ</div>
+  <h1 class="services-title">{{ 'OurServices' | translate }}</h1>
+  <p class="services-desc">{{ 'OurServicesMsg' | translate }}</p>
+  <div class="what-we-do-row">
+    <div class="what-text-block">
+      <h2 class="what-title">{{ 'WhatWeDo' | translate }}</h2>
+      <p class="what-desc">{{ 'WhatWeDoMsg' | translate }}</p>
+      <button type="button" nz-button nzType="primary" nzSize="large" (click)="openContact()">
+        {{ 'DiscussProject' | translate }}
+      </button>
+    </div>
+    <div class="tech-showcase">
+      <div class="tech-icons-row">
+        <nz-icon class="tech-icon-lg" nzType="dot-net" nzTheme="outline" />
+        <span class="tech-label-chip">JS</span>
+        <span class="tech-label-chip">TS</span>
+        <span class="tech-label-chip">SQL</span>
+        <nz-icon class="tech-icon-sm" nzType="cloud-server" nzTheme="outline" />
+        <nz-icon class="tech-icon-sm" nzType="docker" nzTheme="outline" />
+      </div>
+      <div class="tech-stack-name">{{ 'TechStackTitle' | translate }}</div>
+      <p class="tech-stack-sub">{{ 'TechnologiesListMsg' | translate }}</p>
+    </div>
+  </div>
+  <div class="service-cards-grid">
+    @for (service of services; track service.title; let index = $index) {
+      <div class="service-card">
+        <div class="service-num">0{{ index + 1 }}</div>
+        <h3 class="service-card-title">{{ service.title | translate }}</h3>
+        <p class="service-card-desc">{{ service.title + 'Msg' | translate }}</p>
+        <ul class="service-list">
+          @for (item of service.items; track item) {
+            <li>{{ item | translate }}</li>
+          }
+        </ul>
+      </div>
+    }
+  </div>
 </div>
-<div class="disscus-project">
-    <button style="width: 300px; height: 50px;" (click)="onClickTouch()" nz-button [nzSize]="size" nzType="primary">{{ 'DiscussProject' | translate}}</button>
-</div>
-<section class="services">
-    <nz-card class="service-card">
-            <p class="service-title">{{ 'WebDevServies' | translate}}</p>
-            <p>{{'WebDevServiesMsg' | translate }}</p>
-            <ul>
-                <li class="dark-light-text">{{'WebAppDev' | translate }}</li>
-                <li class="dark-light-text">{{'BeSpokeAppDev' | translate}}</li>
-                <li class="dark-light-text">{{'SupportProject' | translate }}</li>
-                <li class="dark-light-text">{{ 'LegacyModern' | translate}}</li>
-            </ul>
-    </nz-card>
-</section>

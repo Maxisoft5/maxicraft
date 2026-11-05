@@ -1,13 +1,18 @@
 import { Component } from '@angular/core';
-import { NzCardModule } from 'ng-zorro-antd/card';
-import { ContactUsForm } from '../../components/contact-us/contact-us-form';
 import { TranslateModule } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-welcome',
-  imports: [NzCardModule, ContactUsForm, TranslateModule],
+  imports: [TranslateModule],
   templateUrl: './welcome.html',
-   standalone: true,
   styleUrl: './welcome.css'
 })
-export class Welcome {}
+export class Welcome {
+  readonly craft = [
+    { letter: 'C', title: 'CodeCareClarity', description: 'ClarityCodeMsg' },
+    { letter: 'R', title: 'RapidYetResponsible', description: 'RapidDevMsg' },
+    { letter: 'A', title: 'ArchitectureScales', description: 'ArchitectureMsg' },
+    { letter: 'F', title: 'FocusOnUser', description: 'FocusOnUserMsg' },
+    { letter: 'T', title: 'TestedObservable', description: 'TestedObservableMsg' }
+  ];
+}

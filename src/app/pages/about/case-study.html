@@ -1,0 +1,48 @@
+<article class="case-page">
+  <a class="case-back" routerLink="/about" fragment="experience">← {{ 'BackToExperience' | translate }}</a>
+  @if (project(); as item) {
+    @let prefix = 'Cases.' + item.id + '.';
+    <header class="case-header">
+      <p class="case-period">{{ item.period | translate }} · {{ item.role }}</p>
+      <h1>{{ item.name }}</h1>
+      <p class="case-summary">{{ (prefix + 'Summary') | translate }}</p>
+      <div class="case-tags">
+        @for (tag of item.tags; track tag) {
+          <nz-tag>{{ tag }}</nz-tag>
+        }
+      </div>
+    </header>
+
+    @for (section of sections; track section.key) {
+      <section class="case-section">
+        <h2>{{ section.title | translate }}</h2>
+        @let details = (prefix + section.key) | translate;
+        @if (details?.length === 1) {
+          <p>{{ details[0] }}</p>
+        } @else if (isArray(details)) {
+          <ul>
+            @for (detail of details; track detail) {
+              <li>{{ detail }}</li>
+            }
+          </ul>
+        }
+      </section>
+    }
+
+    @if (item.hasRelatedWork) {
+      @let relatedWork = (prefix + 'RelatedWork') | translate;
+      <section class="case-section">
+        <h2>{{ 'RelatedClientWork' | translate }}</h2>
+        @if (isArray(relatedWork)) {
+          <ul>
+            @for (detail of relatedWork; track detail) {
+              <li>{{ detail }}</li>
+            }
+          </ul>
+        }
+      </section>
+    }
+  } @else {
+    <h1>{{ 'CaseNotFound' | translate }}</h1>
+  }
+</article>

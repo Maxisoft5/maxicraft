@@ -1,0 +1,65 @@
+.case-page {
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 56px 24px 80px;
+}
+
+.case-back {
+  display: inline-block;
+  margin-bottom: 28px;
+}
+
+.case-period {
+  font-size: 13px;
+}
+
+.case-header h1,
+.case-section h2 {
+  font-family: 'Yanone Kaffeesatz', sans-serif;
+  line-height: 1.05;
+}
+
+.case-header h1 {
+  font-size: clamp(52px, 10vw, 120px);
+  font-weight: 700;
+  margin: 0 0 20px;
+}
+
+.case-summary {
+  max-width: 68ch;
+  font-size: 17px;
+  line-height: 1.65;
+}
+
+.case-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.case-section {
+  margin-top: 40px;
+  padding-top: 32px;
+  border-top: 1px solid var(--app-border-color);
+  font-size: 16px;
+  line-height: 1.65;
+}
+
+.case-section h2 {
+  font-size: clamp(28px, 4vw, 44px);
+}
+
+.case-section p,
+.case-section ul {
+  max-width: 76ch;
+}
+
+.case-section li + li {
+  margin-top: 8px;
+}
+
+@media (max-width: 768px) {
+  .case-page {
+    padding: 32px 16px 60px;
+  }
+}

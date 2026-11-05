@@ -1,19 +1,80 @@
-<div>
-    {{ 'AboutMeMsg' | translate}}
-</div>
-
-<section>
-    <nz-card class="msg-block">
-        <p class="title-block">{{'DropMeALine' | translate}}</p>
-        <a href="mailto:mail@htmlacademy.ru" style="font-size: 25px;">maxisoft4@gmail.com</a>
-        <p></p>
-    </nz-card>
-    <div class="social-links">
-        <a class="icon" href="https://github.com/Maxisoft5?tab=repositories">
-            <nz-icon style="font-size: 30px;" nzType="github" nzTheme="outline" />
+<div class="about-page">
+  <section class="about-intro">
+    <div class="section-eyebrow"><span class="eyebrow-line"></span> {{ 'AboutMe' | translate }}</div>
+    <div class="about-header-row">
+      <div class="about-role-block">
+        <div class="role-title">Full Stack .NET<br />Developer</div>
+        <div class="role-meta">English B2</div>
+        <a class="cv-download-btn" nz-button nzType="default" [href]="cvUrl | async" download>
+          <nz-icon nzType="download" nzTheme="outline" />
+          <span>{{ 'GetCv' | translate }} <strong>PDF</strong></span>
         </a>
-        <a class="icon" href="https://www.linkedin.com/in/maksym-gryniuk-a7263a189/">
-            <nz-icon style="font-size: 30px;" nzType="linkedin" nzTheme="outline" />
-        </a>
+      </div>
     </div>
-</section>
+    <p class="about-bio">{{ 'AboutMeMsg' | translate }}</p>
+    <div class="stats-grid">
+      <div class="stat-item"><div class="stat-value">6+</div><div class="stat-label">{{ 'ExpYears' | translate }}</div></div>
+      <div class="stat-item"><div class="stat-value">20+</div><div class="stat-label">{{ 'CommercialProjects' | translate }}</div></div>
+      <div class="stat-item"><div class="stat-value">25000</div><div class="stat-label">{{ 'AverageRps' | translate }}</div></div>
+    </div>
+  </section>
+
+  <section class="section-block">
+    <div class="section-label-row"><span class="section-dash"></span><span class="section-label-text">{{ 'Stack' | translate }}</span></div>
+    <div class="skills-grid">
+      @for (group of skillGroups; track group.label) {
+        <div class="skill-group">
+          <div class="skill-group-label">{{ group.label | translate }}</div>
+          <div class="skill-tags">
+            @for (skill of group.skills; track skill) {
+              <nz-tag>{{ skill }}</nz-tag>
+            }
+          </div>
+        </div>
+      }
+    </div>
+  </section>
+
+  <section class="section-block" id="experience">
+    <div class="section-label-row"><span class="section-dash"></span><span class="section-label-text">{{ 'Experience' | translate }}</span></div>
+    <div class="experience-list">
+      @for (project of projects; track project.id) {
+        <article class="exp-item">
+          <div class="exp-timeline-col"><span class="timeline-dot" [class.dot-active]="project.current"></span></div>
+          <div class="exp-content">
+            <div class="exp-period">{{ project.period | translate }}</div>
+            <h3 class="exp-company">{{ project.name }}</h3>
+            <div class="exp-meta-row"><span class="exp-role">{{ project.role }}</span></div>
+            <p class="exp-desc">{{ ('Cases.' + project.id + '.Summary') | translate }}</p>
+            <div class="exp-tags">
+              @for (tag of project.tags; track tag) {
+                <nz-tag>{{ tag }}</nz-tag>
+              }
+            </div>
+            <a class="case-study-btn" nz-button nzType="default" [routerLink]="['/case-studies', project.id]"
+               [attr.aria-label]="('FullCaseStudy' | translate) + ' · ' + project.name">
+              <span>{{ 'FullCaseStudy' | translate }}</span> <nz-icon nzType="arrow-right" nzTheme="outline" />
+            </a>
+          </div>
+        </article>
+      }
+    </div>
+  </section>
+
+  <section class="section-block contact-section">
+    <div class="section-label-row"><span class="section-dash"></span><span class="section-label-text">{{ 'Contacts' | translate }}</span></div>
+    <h2 class="contact-title">{{ 'WriteToMeAt' | translate }}</h2>
+    <a class="contact-email" href="mailto:maxisoft4@gmail.com">maxisoft4@gmail.com</a>
+    <div class="contact-cv-row">
+      <a nz-button nzType="primary" nzSize="large" [href]="cvUrl | async" download>
+        <nz-icon nzType="download" nzTheme="outline" /> <span>{{ 'DownloadResumePdf' | translate }}</span>
+      </a>
+    </div>
+    <div class="contact-find-label">{{ 'FindMeHere' | translate }}</div>
+    <div class="contact-social">
+      <a class="social-link" href="https://github.com/Maxisoft5" target="_blank" rel="noopener"><nz-icon nzType="github" nzTheme="outline" /><span>GitHub</span></a>
+      <a class="social-link" href="https://www.linkedin.com/in/maksym-gryniuk-a7263a189/" target="_blank" rel="noopener"><nz-icon nzType="linkedin" nzTheme="outline" /><span>LinkedIn</span></a>
+      <a class="social-link" href="https://t.me/Moximusss" target="_blank" rel="noopener"><nz-icon nzType="send" nzTheme="outline" /><span>Telegram</span></a>
+    </div>
+  </section>
+</div>

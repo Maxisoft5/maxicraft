@@ -8,8 +8,8 @@
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
     "serve:ssr:maxisoft-web": "node dist/maxisoft-web/server/server.mjs",
-    "github-build": "ng build --configuration production --base-href 'https://Maxisoft.github.io/maxicraft/'",
-    "github-deploy": "npx angular-cli-ghpages --dir=dist/maxisoft-web --no-silent"
+    "github-build": "ng build --configuration production --base-href /maxicraft/",
+    "github-deploy": "npx angular-cli-ghpages --dir=dist/maxisoft-web/browser --no-silent"
   },
   "prettier": {
     "printWidth": 100,
